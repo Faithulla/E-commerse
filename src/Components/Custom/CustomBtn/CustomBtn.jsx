@@ -2,11 +2,12 @@ import React from 'react';
 
 import './CustomBtn.scss'
 
-const CustomBtm = ({children, ...otherProps}) => {
+const CustomBtm = ({ isGoogleSignIn ,children, ...otherProps}) => {
     return ( 
-        <button className='custom-button' {...otherProps}>
+        <button className={`${isGoogleSignIn ? 'google-sign-in' : ''} custom-button`} {...otherProps}>
             {children}
         </button>
+        //Dont fucking left space beetwen sybols idiot
      );
 }
  
