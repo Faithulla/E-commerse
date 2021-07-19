@@ -2,6 +2,7 @@ import React from 'react';
 import FormInput from '../Form-Fill/FormInput';
 import './SignIn.scss'
 import CustomBtm from '../../Custom/CustomBtn/CustomBtn';
+import { singInWithGoogle } from '../../Storage/FireBase-utils/fireBase';
 
 class SignIn extends React.Component {
     constructor(props) {
@@ -42,6 +43,8 @@ class SignIn extends React.Component {
                     value={this.state.password}/>
 
                     <CustomBtm type="Submit">Sign In</CustomBtm>
+                    <CustomBtm onClick={singInWithGoogle}>Sign in with Google</CustomBtm>
+                    
                 </form>
             </div>
          );
