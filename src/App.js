@@ -5,7 +5,8 @@ import HomePage from './Components/page/home/HomePage';
 import Shop from './Components/Shop/Shop';
 import SignInOut from './Components/FillForm/Sign-in-out/Sign-in-out';
 import './App.css'
-import { auth } from './Components/Storage/FireBase-utils/fireBase'
+import { auth, createUserProfileDocument , } from './FireBase-utils/fireBase'
+
 
 class App extends React.Component {
   constructor(props) {
@@ -13,16 +14,29 @@ class App extends React.Component {
     this.state = { 
       currentUser: null
      }
+     console.log(this.state);
   }
-  unsubscibeFromAuth = null
-  componentDidMount(){
-    this.unsubscibeFromAuth = auth.onAuthStateChanged(user => {
-      this.setState({currentUser: user})
-    });
-  }
-  componentWillUnmount(){
-    this.unsubscibeFromAuth();
-  }
+unSubscribeFromAuth = null;
+
+componentDidMount() {
+  this.unSubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+    if(userAuth){
+      const userRef = await createUserProfileDocument(userAuth);
+      userRef.onSnapshot(snapShot => 
+        {
+        this.setState(
+          {
+            currentUser: {
+              id: snapShot.id,
+              ...snapShot.data()
+            }
+          });
+      });
+    }else{
+      this.setState({ currentUser: userAuth})
+    }
+  })
+}
   render() { 
     return ( 
       <div>

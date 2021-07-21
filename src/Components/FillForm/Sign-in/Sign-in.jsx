@@ -2,7 +2,7 @@ import React from 'react';
 import FormInput from '../Form-Fill/FormInput';
 import './SignIn.scss'
 import CustomBtm from '../../Custom/CustomBtn/CustomBtn';
-import { singInWithGoogle } from '../../Storage/FireBase-utils/fireBase';
+import { singInWithGoogle } from '../../../FireBase-utils/fireBase';
 
 class SignIn extends React.Component {
     constructor(props) {
@@ -31,20 +31,22 @@ class SignIn extends React.Component {
                 <form onSubmit={this.handleSubmit}>
                 {/* inputs */}
                     <FormInput 
+                    label='Email'
                     type="email" 
                     name="email"
-                    label='Email'
                     onChange={this.handleChange}
                     value={this.state.email}/>
                     <FormInput 
-                    type="password"
                     label='Password'
+                    type="password"
                     onChange={this.handleChange} 
                     name="password" 
                     value={this.state.password}/>
                     {/* buttons */}
+                    <div className="buttons">
                     <CustomBtm type="Submit">Sign In</CustomBtm>                    
                     <CustomBtm onClick={singInWithGoogle} isGoogleSignIn>Sign in with Google</CustomBtm>                   
+                    </div>
                 </form>
             </div>
          );

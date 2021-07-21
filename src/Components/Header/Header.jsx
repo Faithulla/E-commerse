@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
 import { ReactComponent as Logo } from '../../assets/crown.svg';
-import { auth } from '../Storage/FireBase-utils/fireBase';
+import { auth } from '../../FireBase-utils/fireBase';
 
 import './Header.scss'
 
