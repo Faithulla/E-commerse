@@ -14,6 +14,8 @@
     border: none;
     cursor: pointer;
     border-radius: 5px;
+    display: flex;
+    justify-content: center;
     transition: 1s;
   
     &:hover {
@@ -34,6 +36,17 @@
           border: 1px solid #4285f4;
           color: #000;
           
+      }
+    }
+    &.inverted{
+      background-color: #fff;
+      color: #000;
+      border: 1px solid #000;
+
+      &:hover{
+        background-color: #000;
+        color: #fff;
+        border: none;
       }
     }
   }
