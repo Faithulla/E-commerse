@@ -7,7 +7,7 @@ import SignInOut from "./Components/FillForm/Sign-in-out/Sign-in-out";
 import "./App.css";
 import { auth, createUserProfileDocument } from "./FireBase-utils/fireBase";
 import { connect } from "react-redux";
-import { setCurrentUser } from "./Redux/user/userActions";
+import { setCurrentUser } from './Redux/user/user.actions';
 
 
 class App extends  Component{
@@ -60,10 +60,12 @@ class App extends  Component{
   }
 }
 
+// const mapStateToProps = ({user}) => ({
+//   currentUser: user.currentUser
+// })
 
-
-const mapDispatchToProps = (dispatch) => ({
-  setCurrentUser: (user) => dispatch(setCurrentUser(user)),
+const mapDispatchToProps = dispatch => ({
+  setCurrentUser: user => dispatch(setCurrentUser(user)),
 });
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(null,mapDispatchToProps)(App);

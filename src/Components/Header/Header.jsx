@@ -2,11 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../../assets/crown.svg";
 import { auth } from "../../FireBase-utils/fireBase";
-import { connect } from "react-redux";
-import CardIcon from "../page/cardItem/Card-icon/card-icon";
-import CartDropDown from "../page/cardItem/Card-DropDown/cart-dropdown";
-
+import CardIcon from "../page/cardItem/Card-icon/Card-icon";
 import "./Header.scss";
+import CartDropDown from "../page/cardItem/Card-DropDown/Card-DropDown";
+import { connect } from "react-redux";
 
 const Header = ({ currentUser, hidden }) => {
   return (
@@ -32,10 +31,7 @@ const Header = ({ currentUser, hidden }) => {
         )}
         <CardIcon />
       </div>
-      {
-        hidden ? null :  
-       <CartDropDown />
-      }
+      {hidden ? null : <CartDropDown />}
     </div>
   );
 };
