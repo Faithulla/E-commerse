@@ -6,9 +6,11 @@ import Shop from "./Components/page/Shop/Shop";
 import SignInOut from "./Components/FillForm/Sign-in-out/Sign-in-out";
 import "./App.css";
 import { auth, createUserProfileDocument } from "./FireBase-utils/fireBase";
+import CheckOut from './Components/page/checkout/checkout';
 import { connect } from "react-redux";
 import { setCurrentUser } from './Redux/user/user.actions';
-
+import { selectCurrentUser } from './Redux/user/user.selector';
+import { createStructuredSelector } from 'reselect'
 
 class App extends  Component{
 
@@ -47,6 +49,7 @@ class App extends  Component{
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/shop" component={Shop} />
+          <Route exact path="/checkout" component={CheckOut} />
           <Route
             exact
             path="/sign"
@@ -60,12 +63,12 @@ class App extends  Component{
   }
 }
 
-// const mapStateToProps = ({user}) => ({
-//   currentUser: user.currentUser
-// })
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser
+})
 
 const mapDispatchToProps = dispatch => ({
   setCurrentUser: user => dispatch(setCurrentUser(user)),
 });
 
-export default connect(null,mapDispatchToProps)(App);
+export default connect(mapStateToProps,mapDispatchToProps)(App);
