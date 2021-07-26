@@ -1,18 +1,37 @@
-import React from 'react';
-import './checkout-item.scss'
-
-const CheckOutItem = ({ cartItem: {name, imageUrl, price, quantity} }) => {
-    return ( 
-        <div className="checkout-item">
-            <div className="image-container">
-                <img src={imageUrl} alt="" />
-            </div>
-            <span className="name">{name}</span>
-            <span className="quantity">{quantity}</span>
-            <span className="price">{price}</span>
-            <div className="remove">&#10007;</div>
+import React from "react";
+import { connect } from "react-redux";
+import "./checkout-item.scss";
+import { addItem, clearItemFromCart } from "../../../../Redux/cart/cart.action";
+import { removeItemFromCart } from "../../../../Redux/cart/cart.utils";
+const CheckOutItem = ({ cartItem, clearItem, addItem, removeItem }) => {
+  const { name, imageUrl, price, quantity } = cartItem;
+  return (
+    <div className="checkout-item">
+      <div className="image-container">
+        <img src={imageUrl} alt="item" />
+      </div>
+      <span className="name">{name}</span>
+      <span className="quantity">
+        <div className="arrow" onClick={() => removeItem(cartItem)}>
+          &#10094;
         </div>
-     );
-}
- 
-export default CheckOutItem;
+        <span className="value">{quantity}</span>
+        <div className="arrow" onClick={() => addItem(cartItem)}>
+          &#10095;
+        </div>
+      </span>
+      <span className="price">{price}</span>
+      <div className="remove-button" onClick={() => clearItem(cartItem)}>
+        &#10007;
+      </div>
+    </div>
+  );
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  clearItem: (item) => dispatch(clearItemFromCart(item)),
+  addItem: (item) => dispatch(addItem(item)),
+  removeItem: (item) => dispatch(removeItemFromCart(item)),
+});
+
+export default connect(null,mapDispatchToProps)(CheckOutItem);
