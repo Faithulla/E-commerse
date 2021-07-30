@@ -1,9 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import { toggleCartHidden } from "../../../../Redux/cart/cart.action";
-import { ReactComponent as Shopping } from "../../../../assets/shopping.svg";
+import { toggleCartHidden } from "../../../Redux/cart/cart.action";
+import { ReactComponent as Shopping } from "../../../assets/shopping.svg";
 import { createStructuredSelector } from "reselect";
-import { selectCartItemsCount } from "../../../../Redux/cart/cart.selectors";
+import { selectCartItemsCount } from "../../../Redux/cart/cart.selectors";
 import "./card-icon.scss";
 
 const CardIcon = ({ toggleCartHidden, itemCount }) => {

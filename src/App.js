@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { Switch, Route, Redirect } from "react-router-dom";
 import Header from "./Components/Header/Header";
-import HomePage from "./Components/page/home/HomePage";
-import Shop from "./Components/page/Shop/Shop";
-import SignInOut from "./Components/FillForm/Sign-in-out/Sign-in-out";
+import HomePage from "./page/home/HomePage";
+import Shop from "./page/Shop/Shop";
+import SignInOut from "./page/Sign-in-out/Sign-in-out";
 import "./App.css";
 import { auth, createUserProfileDocument } from "./FireBase-utils/fireBase";
-import CheckOut from './Components/page/checkout/checkout';
+import CheckOut from './Components/checkout/checkout';
 import { connect } from "react-redux";
 import { setCurrentUser } from './Redux/user/user.actions';
 import { selectCurrentUser } from './Redux/user/user.selector';

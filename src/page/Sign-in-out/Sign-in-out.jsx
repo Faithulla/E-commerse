@@ -1,6 +1,6 @@
 import React from 'react';
-import SignIn from '../Sign-in/Sign-in';
-import SignUp from '../SignUp/SignUp';
+import SignIn from '../../Components/FillForm/Sign-in/Sign-in';
+import SignUp from '../../Components/FillForm/SignUp/SignUp';
 import './Sign-in-out.scss'
 
 const SignInOut = () => {
