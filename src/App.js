@@ -11,6 +11,7 @@ import { connect } from "react-redux";
 import { setCurrentUser } from './Redux/user/user.actions';
 import { selectCurrentUser } from './Redux/user/user.selector';
 import { createStructuredSelector } from 'reselect'
+import Contact from './page/contact/contact';
 
 class App extends  Component{
 
@@ -50,6 +51,7 @@ class App extends  Component{
           <Route exact path="/" component={HomePage} />
           <Route exact path="/shop" component={Shop} />
           <Route exact path="/checkout" component={CheckOut} />
+          <Route exact path='/contact' component={Contact}/>
           <Route
             exact
             path="/sign"

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PreviewCollection from "../../Components/PreviewCollection/PreviewCollection";
+import Collections from '../../Components/CollectionsOverview/collections';
 import SHOP_DATA from "./Shop_data";
 
 class Shop extends Component {
@@ -12,9 +12,7 @@ class Shop extends Component {
   render() {
     return (
       <div>
-        {this.state.collections.map(({ id, ...otherCollections }) => (
-          <PreviewCollection key={id} {...otherCollections} />
-        ))}
+        <Collections collection={this.state.collections} />
       </div>
     );
   }
